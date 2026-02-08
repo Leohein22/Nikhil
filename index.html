@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#ffe6f0;
+font-family:Arial;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+text-align:center;
+width:320px;
+}
+
+.anime{
+width:140px;
+animation: float 2s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-15px)}
+100%{transform:translateY(0)}
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:20px;
+font-size:16px;
+margin:10px;
+}
+
+#yes{background:#ff4d88;color:white;}
+#no{background:#ddd;position:absolute;}
+
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+<img src="love.gif" class="anime">
+
+<h3>Poojitha, will you be my Valentine? ❤️</h3>
+
+<button id="yes">Yes 💖</button>
+<button id="no">No 💔</button>
+
+</div>
+
+<script>
+
+const no=document.getElementById("no");
+
+no.addEventListener("touchstart",move);
+no.addEventListener("mouseover",move);
+
+function move(){
+no.style.left=Math.random()*200+"px";
+no.style.top=Math.random()*200+"px";
+}
+
+document.getElementById("yes").onclick = () => {
+    const token = 8387956975:AAFwjGwKsDAhFusptC4h2kMKf3EfJa84N_I; 
+    const chatId = 7697378425;
+    const message = 'Success! Poojitha clicked YES! ❤️';
+
+    const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+    fetch(url).then(() => {
+        // စာပို့ပြီးရင် Website မှာ ပေါ်လာမယ့်စာ
+        document.getElementById("card").innerHTML = "<h1>Yay Love U💖🎉</h1>";
+    });
+}
+
+
+</script>
+
+</body>
+</html>
